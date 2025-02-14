@@ -4,7 +4,7 @@ import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.minecraft.text.Text;
 
 public class AutoForwards {
-    private static boolean isSprintingDuringAutoForwards = false;
+    private static boolean isSprintingDuringAutoForwards = true;
     private static boolean isAutoForwards = false;
 
     public static void setForward() {
@@ -16,11 +16,11 @@ public class AutoForwards {
                 client.options.sprintKey.setPressed(isSprintingDuringAutoForwards);
             }
 
-            // cancel the auto-forwards by pressing the backwards, or forwards, or autoForwards key
+            // cancel the auto-forwards by pressing the backwards, or forwards, or
+            // autoForwards key
             else if (client.options.backKey.wasPressed() && isAutoForwards
                     || client.options.forwardKey.wasPressed() && isAutoForwards
-                    || ModKeyBindings.autoForwards.wasPressed() && isAutoForwards)
-            {
+                    || ModKeyBindings.autoForwards.wasPressed() && isAutoForwards) {
                 isAutoForwards = false;
                 client.options.forwardKey.setPressed(false);
                 client.options.sprintKey.setPressed(false);
@@ -31,12 +31,12 @@ public class AutoForwards {
     public static void setSprintDuringAutoForward() {
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
             if (ModKeyBindings.setSprintDuringAutoForwards.wasPressed()) {
-                    isSprintingDuringAutoForwards = !isSprintingDuringAutoForwards;
-                    String msgToUser = "Sprint during auto forwards: " + (isSprintingDuringAutoForwards ? "on" : "off");
+                isSprintingDuringAutoForwards = !isSprintingDuringAutoForwards;
+                String msgToUser = "Sprint during auto forwards: " + (isSprintingDuringAutoForwards ? "on" : "off");
 
-                    client.player.sendMessage(Text.literal(
-                            msgToUser),
-                            true);
+                client.player.sendMessage(Text.literal(
+                        msgToUser),
+                        true);
             }
         });
     }
