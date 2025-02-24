@@ -1,6 +1,6 @@
 package com.rmpqol;
 
-import net.fabricmc.fabric.api.event.player.PlayerBlockBreakEvents;
+import net.fabricmc.fabric.api.event.client.player.ClientPlayerBlockBreakEvents;
 import net.fabricmc.fabric.api.event.player.UseBlockCallback;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -30,7 +30,7 @@ public class AutoHarvest {
     }
 
     private static void cancelHarvest() {
-        PlayerBlockBreakEvents.AFTER.register((world, player, pos, state, blockEntity) -> {
+        ClientPlayerBlockBreakEvents.AFTER.register((world, player, pos, state) -> {
             if (destroyCropBlock) {
                 destroyCropBlock = false;
                 client.options.attackKey.setPressed(false);
