@@ -10,6 +10,6 @@ public class RmpqolClient implements ClientModInitializer {
 		// rendering.
 		ModKeyBindings.register();
 		AutoForwards.init();
-		AutoHarvest.init();
+		EventListener.init();
 	}
 }
