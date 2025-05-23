@@ -1,5 +1,6 @@
 package com.rmpqol;
 
+import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.event.player.UseBlockCallback;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -19,7 +20,6 @@ public class EventListener {
 
             // Autoharvest
             if (block instanceof CropBlock cropBlock && cropBlock.getAge(blockState) == cropBlock.getMaxAge()) {
-                client.options.attackKey.setPressed(true);
                 AutoHarvest autoHarvest = new AutoHarvest(client);
                 autoHarvest.harvest();
             }
@@ -28,7 +28,25 @@ public class EventListener {
         });
     }
 
+    private static void clientTickEvents() {
+        ClientTickEvents.END_CLIENT_TICK.register(client -> {
+            // AutoForwards
+            if (ModKeyBindings.autoForwards.wasPressed() && !AutoForwards.getIsAutoForwardsActive()) {
+                AutoForwards autoForwards = AutoForwards.getInstance();
+                autoForwards.setForwards();
+                // cancel the autoforwards by pressing the backwards, or forwards, or
+                // autoForwards key
+            } else if (client.options.backKey.wasPressed() && AutoForwards.getIsAutoForwardsActive()
+                    || client.options.forwardKey.wasPressed() && AutoForwards.getIsAutoForwardsActive()
+                    || ModKeyBindings.autoForwards.wasPressed()) {
+                AutoForwards autoForwards = AutoForwards.getInstance();
+                autoForwards.cancelForwards();
+            }
+        });
+    }
+
     public static void init() {
         blockCallback();
+        clientTickEvents();
     }
 }
