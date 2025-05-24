@@ -6,22 +6,20 @@ import net.minecraft.client.util.InputUtil;
 import org.lwjgl.glfw.GLFW;
 
 public class ModKeyBindings {
-    public static KeyBinding autoForwards;
-    public static KeyBinding setSprintDuringAutoForwards;
+    public static KeyBinding autoForward;
+    public static KeyBinding setSprintDuringAutoForward;
 
     public static void register() {
-        autoForwards = KeyBindingHelper.registerKeyBinding(new KeyBinding(
-				"key.rmpqol.forwards",
+        autoForward = KeyBindingHelper.registerKeyBinding(new KeyBinding(
+                "key.rmpqol.forward",
                 InputUtil.Type.KEYSYM,
                 GLFW.GLFW_KEY_EQUAL,
-				"category.rmpqol.rmpqol"
-        ));
+                "category.rmpqol.rmpqol"));
 
-        setSprintDuringAutoForwards = KeyBindingHelper.registerKeyBinding(new KeyBinding(
+        setSprintDuringAutoForward = KeyBindingHelper.registerKeyBinding(new KeyBinding(
                 "key.rmpqol.setSprint",
                 InputUtil.Type.KEYSYM,
                 GLFW.GLFW_KEY_L,
-                "category.rmpqol.rmpqol"
-        ));
+                "category.rmpqol.rmpqol"));
     }
 }

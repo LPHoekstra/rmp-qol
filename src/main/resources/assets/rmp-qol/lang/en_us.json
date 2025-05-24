@@ -1,6 +1,6 @@
 {
   "item.mod_id.god_item": "God Item",
   "category.rmpqol.rmpqol": "RMP QOL",
-  "key.rmpqol.forwards": "Auto forwards",
-  "key.rmpqol.setSprint": "Set sprint during auto forwards"
+  "key.rmpqol.forward": "Auto forward",
+  "key.rmpqol.setSprint": "Set sprint during auto forward"
 }
