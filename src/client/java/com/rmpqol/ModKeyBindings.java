@@ -7,17 +7,17 @@ import org.lwjgl.glfw.GLFW;
 
 public class ModKeyBindings {
     public static KeyBinding autoForward;
-    public static KeyBinding setSprintDuringAutoForward;
+    public static KeyBinding sprintAutoForward;
 
     public static void register() {
         autoForward = KeyBindingHelper.registerKeyBinding(new KeyBinding(
-                "key.rmpqol.forward",
+                "key.rmpqol.autoForward",
                 InputUtil.Type.KEYSYM,
                 GLFW.GLFW_KEY_EQUAL,
                 "category.rmpqol.rmpqol"));
 
-        setSprintDuringAutoForward = KeyBindingHelper.registerKeyBinding(new KeyBinding(
-                "key.rmpqol.setSprint",
+        sprintAutoForward = KeyBindingHelper.registerKeyBinding(new KeyBinding(
+                "key.rmpqol.sprintAutoForward",
                 InputUtil.Type.KEYSYM,
                 GLFW.GLFW_KEY_L,
                 "category.rmpqol.rmpqol"));
