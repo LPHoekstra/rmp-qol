@@ -8,6 +8,7 @@ import org.lwjgl.glfw.GLFW;
 public class ModKeyBindings {
     public static KeyBinding autoForward;
     public static KeyBinding sprintAutoForward;
+    public static KeyBinding quartzXray;
 
     public static void register() {
         autoForward = KeyBindingHelper.registerKeyBinding(new KeyBinding(
@@ -20,6 +21,12 @@ public class ModKeyBindings {
                 "key.rmpqol.sprintAutoForward",
                 InputUtil.Type.KEYSYM,
                 GLFW.GLFW_KEY_L,
+                "category.rmpqol.rmpqol"));
+
+        quartzXray = KeyBindingHelper.registerKeyBinding(new KeyBinding(
+                "key.rmpqol.quartzXray",
+                InputUtil.Type.KEYSYM,
+                GLFW.GLFW_KEY_O,
                 "category.rmpqol.rmpqol"));
     }
 }

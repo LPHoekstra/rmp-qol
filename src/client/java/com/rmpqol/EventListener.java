@@ -8,7 +8,6 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.math.BlockPos;
 
 public class EventListener {
-
     private static void blockCallback() {
         UseBlockCallback.EVENT.register((playerEntity, world, hand, blockHitResult) -> {
             BlockPos blockPos = blockHitResult.getBlockPos();
@@ -26,6 +25,9 @@ public class EventListener {
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
             // AutoForwards
             AutoForward.handleAutoForwardTick();
+
+            // Quartz Xray
+            QuartzXray.handleInit();
         });
     }
 
